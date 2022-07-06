@@ -63,6 +63,8 @@ $H_A$: Education has something to do with voting
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
+Years of education is a numerical factor. Voting is a categorical factor. We use Numerical~Categorical. 
+
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -73,13 +75,31 @@ $H_A$: Education has something to do with voting
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+boxplot(EDUC~VOTE12,data=GSSdata)
+```
+
+The higher the education years the more the boxplot stays steady. The ones that voted have a greater amount in the median, while those that do not vote have less in the median. Those with more years in education also have a higher max amount. 
+
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+favstats(EDUC~VOTE12,data=GSSdata)
+```
+
+The numerical results show the numbers to be fairly close. Minimum is only different by 2 and the max by 1. Education and voting seem to not be that much of correlation from these results. 
+
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+```{r}
+t.test(EDUC~VOTE12,data=GSSdata)
+```
+
+P-value is 0.0000001248. Null hypothesis is rejected. Alternative hypothesis is accepted. Even though the numerical results showed a slight difference. There still is a difference between those with more educational years. Thos with more education tend to vote more than those with less.
 
 #  Question 3
 
