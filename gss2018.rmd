@@ -26,10 +26,20 @@ source("GrabData.R")
 The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.  
 First question - Is opinion on the death penalty (CAPPUN) independent of gun ownership (OWNGUN)?
 
+$H_0$: Gunownership has nothing to do with the death penalty.       
+$H_A$: Gunownership is a factor to the death penalty.
+
+
 
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+
+
+Both variables are categorical, each with 2 levels. OWNGUN yes or no?
+
+We use categorical~categorical analysis.
+Chi-squared test of independence, fisher exact test for odds ratio. 
 
 ##Results
 
@@ -41,19 +51,45 @@ First question - Is opinion on the death penalty (CAPPUN) independent of gun own
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+barchartGC(~OWNGUN + CAPPUN,data=GSSdata)
+barchartGC(~OWNGUN + CAPPUN,data=GSSdata, type="percent")
+
+```
+
+From these graphs, the majority favors a No to independence of gunownership and the death penalty.
+
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+table1 <- xtabs(~OWNGUN + CAPPUN,data=GSSdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The top chart inferes that the onwership of a gun is in favor to the death penalty, while if they dont own a gun the number is still over 50 for in favor. 
+
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+Both the fishers exact and chi-squared test have a p-value less than 0.05. There is a relation between gun ownership and the death penalty. Those with guns are more in favor and those with no guns are still more in favor. The null hypothesis is rejected in favor of the alternative. 
 
 #  Question 2
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
 Is there a difference in years of education (EDUC) between the those who did or did not vote in 2012 (VOTE12)?
+
+
 
 ## Methods
 
