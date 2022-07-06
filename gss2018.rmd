@@ -141,5 +141,5 @@ There is a difference between some of the levels of education and the test. Thos
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
-Question 1 was cat~cat. Question 2 & 3 are Num~cat. Each question has its own method of solving the hypothesis. P-values are used to see if there is a difference in the comparisons. 
+Question 1 was cat~cat. Question 2 & 3 are Num~cat. Each question has its own method of solving the hypothesis. P-values are used to see if there is a difference in the comparisons. All these different questions are from one data set. 
 
